@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Get user balance</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main_style.css">
+</head>
+<body>
+	<div class="container" id="app">
+		<h2>Get user balance
+			<span id="docReady"></span>
+			<span id="memBal" class="pull-right">
+				<i id="CTS" class="fa fa-database">{{objs.credits}}</i>
+				<i id="videoCTS" class="fa fa-file-video-o">{{objs.video_creds }}</i>
+				<i id="messages" class="fa fa-inbox">{{objs.messages}}</i>
+				<i id="favs" class="fa fa-heart-o">{{objs.favorites }}</i>
+				<i id="un" class="fa fa-user-o">{{objs.userName }}</i>
+			</span>
+		</h2>
+		<hr>
+		<h3>Current socket id: <span id="socketId"></span></h3>
+		<ul>
+			<li v-for="(obj, key) in objs">
+				{{key}} : {{obj}}
+			</li>
+		</ul>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/jquery.ajax-cross-origin.min.js"></script>
+	<script src="js/socket.io.js"></script>
+	<!--<script>-->
+
+		<!--$(function () {-->
+			<!--$('#docReady').text('Doc Ready!');-->
+
+			<!--let socket = io('http://172.22.5.38:8000')-->
+			<!--socket.on('userBal', function (data) {-->
+				<!--$('#socketId').text(socket.id)-->
+				<!--let res = JSON.parse(data)-->
+				<!--let  member = {-->
+					<!--CTS:null,-->
+					<!--videoCTS:null,-->
+					<!--messages:null,-->
+					<!--favs:null,-->
+					<!--un:null,-->
+				<!--};-->
+
+				<!--$.each(res, function(idx, item){-->
+					<!--console.log(item.id)-->
+					<!--member.CTS = item.credits;-->
+					<!--member.videoCTS = item.video_creds;-->
+					<!--member.messages = item.messages;-->
+					<!--member.favs = item.favorites;-->
+					<!--member.un = item.userName;-->
+				<!--});-->
+				<!--$('#CTS').text(member.CTS);-->
+				<!--$('#videoCTS').text(member.videoCTS);-->
+				<!--$('#messages').text(member.messages);-->
+				<!--$('#favs').text(member.favs);-->
+				<!--$('#un').text(member.un);-->
+				<!--$('#memBal').removeClass('hide');-->
+
+
+			<!--})-->
+
+		<!--});-->
+
+	<!--</script>-->
+	<script>
+		let socket = io('http://172.22.5.38:8000')
+		let userObj = {
+			id:19183278,
+
+		}
+		socket.on("connect", function () {
+			console.log("connected");
+			socket.emit('user',userObj.id);
+		});
+
+		socket.on('userBal', function (data) {
+			let res = JSON.parse(data)
+			let objs = res.resp;
+
+			console.log(objs)
+			app.objs = objs;
+		});
+		socket.on('getUser',function () {
+			console.log("getUser");
+			if(userObj.id !== null || userObj.id !== ""){
+				socket.emit('user',userObj.id);
+			}
+
+			return false
+
+		})
+		setInterval(()=>{
+			socket.emit('user',userObj.id);
+		},15000)
+
+		let app = new Vue({
+			el:"#app",
+			data:{
+				objs:""
+			}
+		})
+	</script>
+
+</body>
+</html>

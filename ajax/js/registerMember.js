@@ -22,49 +22,60 @@ let registerMember = {
                 withCredentials: true
             }
         });
-
-
     },
     verifyInput:function(value,id){
-      console.log(value, id);
       let el_id = $('#'+id);
-      if(value === ""){
+        el_id.parent().find('.fast-right-spinner').show();
+      let errorMessage = ""
+        if(id === "username"){
+            errorMessage = "Can not be empty and 6 letters minimum";
+        }else if(id === "emal"){
+          errorMessage = "Bad email address";
+        }else if(id === "password"){
+          errorMessage = "Can not be empty and 7 letters minimum"
+        }
+      if(value === "" || value.length < 5){
+        this.failed(el_id, errorMessage);
 
-        this.failed(el_id)
-      }else{
+      }else if(id != "password"){
           //ajax verify
           let formId = '#'+el_id.parent().parent().attr('id');
-          console.log("Parent: ", formId);
+          //pass to ajax call
           let res = $.when(this.doAjaxVerify(formId, el_id));
-             res.done(function (response) {
+         res.done(function (response) {
+             //current parsing method
+             //server side no returning valid JSON
+             let res = response.replace(/[()]/g, '');
+             res = JSON.stringify(eval('(' + res + ')'));
+             let obj = JSON.parse(res);
+             // new new method ????
 
-                 let res = JSON.parse(response);
-                 console.log(res);
-                 let _id = '#'+res.id
-                 let _isValid = res.is_valid;
-                 let message = res.message
+             let _id = '#'+obj.id
+             let _isValid = obj.is_valid;
+             let message = obj.message
 
-                 if(_isValid){
-                     registerMember.success(_id, message)
-                 }else{
-                     registerMember.failed(_id, message)
-                 }
-             })
-
-
+             if(_isValid){
+                 registerMember.success(_id, message)
+             }else{
+                 registerMember.failed(_id, message)
+             }
+         })
+      }else if(id === "password" && value.length > 5){
+          registerMember.success('#'+id, "Password is valid!")
       }
     },
     submitForm : function(formId){
         console.log(formId)
     },
     success:function(_id, message){
-        console.log("passed", _id);
         $(_id).parent().removeClass('has-error').addClass('has-success');
+        $(_id).parent().find('.fast-right-spinner').hide()
         $(_id).next('span').removeClass('glyphicon-remove').addClass('glyphicon-ok');
         $(_id).parent().find('.help-block').addClass('hide');
     },
     failed:function(id, message){
         $(id).parent().removeClass('has-success').addClass('has-error');
+        $(id).parent().find('.fast-right-spinner').hide()
         $(id).next('span').removeClass('glyphicon-ok').addClass('glyphicon-remove');
         $(id).parent().find('.help-block').removeClass('hide').text(message);
     }

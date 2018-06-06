@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Create User Account the Ajax way</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main_style.css">
 </head>
     <body>
     <div class="container">
@@ -20,19 +21,46 @@
                                onblur="registerMember.verifyInput(this.value, this.id)"
                         >
                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-repeat fast-right-spinner form-control-feedback hide"></span>
                         <span class="help-block hide">User Name can not be empty</span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group has-feedback">
                         <label for="email"></label>
-                        <input type="text" id="email" name="email" class="form-control">
+                        <input type="text" id="email" name="email" class="form-control"
+                               placeholder="email address"
+                               onchange="registerMember.verifyInput(this.value, this.id)"
+                               onblur="registerMember.verifyInput(this.value, this.id)"
+                        >
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <span class="help-block hide">User Name can not be empty</span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group has-feedback">
                         <label for="password"></label>
-                        <input type="text" id="password" name="password" class="form-control">
+                        <input type="password" id="password" name="password" class="form-control"
+                               placeholder="Password"
+                               onchange="registerMember.verifyInput(this.value, this.id)"
+                               onblur="registerMember.verifyInput(this.value, this.id)"
+                        >
+                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                        <span class="help-block hide">Invalid Password</span>
                     </div>
-                    <button type="button" class="btn btn-success" onclick="registerMember.submitForm('#registerNewMember')">Submit</button>
+                    <div id="agree">
+                        <label class="checkmarkWrapper">One
+                            <input type="checkbox" name="agreeTerms" >
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div>
+                        <button type="button" id="submit_btn" class="btn btn-success" onclick="registerMember.submitForm('#registerNewMember')" disabled="disabled">Submit</button>
+
+                    </div>
                 </form>
-                
+                <!-- new form template -->
+                <script type="text/html" id="template">
+                    <li id="{%= id %}">{%= content %}</li>
+                </script>
+                <ul id="destination"></ul>
             </div>
             
         </div>
@@ -51,6 +79,16 @@
                 }
             });
         });
+        $('#registerNewMember').find('input').on('change', function(){
+            let hasError = $('#registerNewMember .has-feedback.has-error').length;
+            let isEmpty = $('#registerNewMember').find('input').filter(function(){
+                return this.value === ""
+            })
+            console.log("Errors Found: " + hasError + " empty inputs: " + isEmpty.length)
+            if(hasError === "0" && isEmpty.length === '0'){
+                $('#submit_btn').prop('disabled', false);
+            }
+        })
     </script>
     </body>
 </html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Wall Updates</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/main_style.css">
+</head>
+<body>
+<div id="app">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-togle="collapse" data-target="topNavBar" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="logo"><img v-bind:src="logo" alt=""></a>
+			</div>
+			<div class="collapse navbar-collapse" id="topNavBar">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#">Home Page</a>
+					</li>
+				</ul>
+				<div id="memBal" class="pull-right">
+					<i id="CTS" class="fa fa-database"></i> {{objs.credits}}
+					<i id="videoCTS" class="fa fa-file-video-o"></i> {{objs.video_creds }}
+					<i id="messages" class="fa fa-inbox"></i> {{objs.messages}}
+					<i id="favs" class="fa fa-heart-o"></i> {{objs.favorites }}
+					<i id="un" class="fa fa-user-o"></i> {{objs.userName }}
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<h2>Wall Events</h2>
+		<hr>
+		<div class="row">
+			<div class="col-md-8">
+				<h4>Model Events</h4>
+				<input type="hidden" name="eventId">
+				<div class="row event-box" v-for="event in events">
+					<div class="col-sm-3 img">
+						<img v-bind:src="event.photo_url" :alt="event.model_username">
+						<div class="status">
+							{{event.online ? 'online':'off line'}}
+						</div>
+					</div>
+					<div class="col-sm-9 description">
+						<div class="title">
+							{{event.caption}}
+						</div>
+						<button class="btn btn-success" v-on:click="modelProfile(event.model_username)">watch my cam</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>Model Pictures</h4>
+				<div class="eventImages" v-for="image in images">
+					<img v-bind:src="image.new_photo_url" v-bind:alt="image.caption">
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/socket.io.js"></script>
+<script>
+	let socket = io('http://172.22.5.38:8000')
+	let userObj = {
+		id:19183278,
+		eventId:null,
+
+	}
+	socket.on("connect", function () {
+		console.log("connected");
+		socket.emit('user',userObj.id);
+		socket.emit('getUpdates');
+	});
+
+	socket.on('userBal', function (data) {
+		let res = JSON.parse(data)
+		let objs = res.resp;
+
+		console.log(objs)
+		app.objs = objs;
+	});
+
+	socket.on('getUser',function () {
+		console.log("getUser");
+		if(userObj.id !== null || userObj.id !== ""){
+			socket.emit('user',userObj.id);
+		}
+
+		return false
+
+	});
+	socket.on('wallEvents', (data)=>{
+		let res = JSON.parse(data);
+		userObj.eventId = res.eventId;
+		let eventIdInput = document.querySelector("[name='eventId'");
+
+		if(eventIdInput.value !== userObj.eventId){
+			console.log('event id is not a match');
+			for(var e = 0; e < res.wallEvents.length; e++){
+				app.events.push(JSON.parse(res.wallEvents[e].event_data));
+			}
+			eventIdInput.value = userObj.eventId;
+		}
+
+
+
+	});
+	socket.on('wallImages', (data)=>{
+		let res = JSON.parse(data)
+		for(var e = 0; e < res.length; e++){
+			app.images.push(JSON.parse(res[e].event_data));
+		}
+
+	})
+	setInterval(()=>{
+		socket.emit('user',userObj.id);
+
+		if (userObj.eventId !== null){
+			console.log("going to get more events")
+			socket.emit('getMoreUpdates', userObj.eventId);
+		}
+
+	},15000)
+
+	let app = new Vue({
+		el:"#app",
+		data:{
+			objs:"",
+			events:[],
+			images:[],
+			title:"Web Cam Club",
+			logo:"images/logo.png"
+		},
+		methods:{
+			modelProfile:(url)=>{
+				let protocol = document.location.protocol;
+				let hostName = document.location.hostname;
+				let url_schema = protocol+'//'+hostName+'/performers/'+url;
+
+				window.location = url_schema;
+			}
+		}
+
+	})
+</script>
+</body>
+</html>
