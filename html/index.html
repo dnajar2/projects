@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viweport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="toggle"><h2>Toggle Test</h2></div>
+    <div class="message"></div>
+    <label class="switch">
+      <input type="checkbox" name="item" value="1">
+      <span class="slider round"></span>
+    </label>
+  </body>
+  <script>
+    var input = document.querySelector('input');
+    var el = {
+      value:'',
+      caption:'',
+      name:input.name,
+    }
+    input.addEventListener('click', function(){
+
+      if(this.checked){
+        el.value = 1;
+        el.caption = "ON";
+      }else{
+        el.value = 0;
+        el.caption = "OFF"
+      }
+      ajaxJs(el);
+      this.parentElement.previousElementSibling.innerText = el.name + " has changed to " + el.caption
+      console.log('input_val:' , el)
+    })
+
+  function ajaxJs(data){
+    console.log(data)
+    var http = new XMLHttpRequest();
+    var url = "/api/check_data.php";
+    var params = {data};
+
+    http.open('POST', url, true);
+    http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function(){
+      if(http.reasystate === 4 && http.status == 200){
+        console.log(http.responseText)
+      }
+    }
+    http.send(params)
+  }
+
+  </script>
+</html>
