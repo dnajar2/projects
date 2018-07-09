@@ -14,43 +14,5 @@
       <span class="slider round"></span>
     </label>
   </body>
-  <script>
-    var input = document.querySelector('input');
-    var el = {
-      value:'',
-      caption:'',
-      name:input.name,
-    }
-    input.addEventListener('click', function(){
-
-      if(this.checked){
-        el.value = 1;
-        el.caption = "ON";
-      }else{
-        el.value = 0;
-        el.caption = "OFF"
-      }
-      ajaxJs(el);
-      this.parentElement.previousElementSibling.innerText = el.name + " has changed to " + el.caption
-      console.log('input_val:' , el)
-    })
-
-  function ajaxJs(data){
-    console.log(data)
-    var http = new XMLHttpRequest();
-    var url = "/api/check_data.php";
-    var params = {data};
-
-    http.open('POST', url, true);
-    http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
-    http.onreadystatechange = function(){
-      if(http.reasystate === 4 && http.status == 200){
-        console.log(http.responseText)
-      }
-    }
-    http.send(params)
-  }
-
-  </script>
+  <script src="js/custom" type="text/javascript"></script>
 </html>
