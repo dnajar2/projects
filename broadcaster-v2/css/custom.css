@@ -1,0 +1,805 @@
+:root{
+    --white-color:#fff;
+}
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900');
+body{
+    font-size: 16px;
+    top: 0 !important;
+    font-family: 'Lato', sans-serif;
+}
+body p, .bold-text {
+    color: inherit !important;
+}
+.FieldEdit p {
+    background-color: #e2e2e2;
+    padding: 5px;
+}
+.bold-text {
+    font-weight: bold;
+}
+#header {
+    background-color: #2d3039;
+}
+#grid {
+    margin-bottom: 60px;
+}
+/*knowledge base link*/
+#kbl{
+    font-size: 1.5rem;
+}
+#missingDoc ul{
+    list-style: none;
+}
+#myAccount li.list-group-item ul {
+    padding-left: 0;
+}
+.logo img {
+    width: 200px;
+}
+.main-header .logo{
+    height: 52px;
+}
+/*content*/
+/*.content {*/
+    /*margin-bottom: 50px;*/
+/*}*/
+.emptyCard{
+    height: 301px;
+}
+.no-top-border{
+    border-top: none;
+}
+.bottom-border{
+    border-bottom: 1px #ccc solid;
+}
+.table-row {
+    padding: 10px 0;
+}
+.table-row:nth-child(even){
+    background-color: #f9f9f9;
+}
+.table-row:nth-child(odd){
+    border-bottom: 1px solid rgba(218, 218, 218, 0.6);
+    border-top: 1px solid rgba(218, 218, 218, 0.6);
+}
+.image-row {
+    padding: 15px;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    border-right: 4px var(--white-color) solid;
+    position: relative;
+    overflow: hidden;
+}
+.info-card .col-xs-4{
+    overflow: hidden;
+}
+.working {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    background-color: #f9fafc9e;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+#fullPageOverlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999999;
+}
+#earningsRendered,
+#phone2phone{
+    margin-bottom: 25px;
+}
+.FieldEdit {
+    padding-left: 15px;
+}
+.FieldEdit.col-sm-6 {
+    padding-bottom: 10px;
+}
+.profile-img img {
+    display: block;
+    margin: auto;
+}
+.box-body.box-profile {
+    padding-bottom: 23px;
+    margin-bottom: 35px;
+}
+.user-name{
+    color: var(--white-color);
+    margin-top: 15px;
+}
+
+span.link {
+    color: #337ab7;
+    cursor: pointer;
+}
+span.link:hover{
+    text-decoration: underline;
+}
+.photo-action-icons {
+    padding: 5px;
+}
+.item_caption{
+    color:#8c8c8c;
+}
+.input-box {
+    border: solid 1px rgba(204, 204, 204, 0.64);
+    padding: 5px;
+    background-color: #f9f9f9;
+    font-weight: 600;
+}
+#blueimp-gallery .fa-chevron-right,
+#blueimp-gallery .fa-chevron-left{
+    font-size: 4rem;
+}
+#blueimp-gallery .action-icons-holder{
+    position: absolute;
+    bottom: 6%;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+}
+#blueimp-gallery .icons {
+    padding: 5px;
+    font-size: 2.5rem;
+}
+#upload-image-i {
+    padding: 9px;
+    background-color: #000;
+}
+.action-icons-holder .icons{
+    background: rgba(255, 255, 255, 0.6);
+}
+.corner-ribbon{
+    width: 200px;
+    background: #e43;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+    text-align: center;
+    line-height: 50px;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.corner-ribbon.sticky{
+    position: absolute;
+}
+.corner-ribbon.shadow{
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.corner-ribbon.top-right{
+    top: 25px;
+    right: -50px;
+    left: auto;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.corner-ribbon.blue{background: #39d;}
+/* Referral Program*/
+.banner-row {
+    border: solid 1px #ccc;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.banner-row img{
+    display: block;
+    margin: auto;
+}
+.banner-row .pull-left:nth-child(2){
+    padding-right:15px;
+}
+.table-header {
+    padding: 10px;
+    background-color: #ccc;
+    margin-top: 10px;
+    font-size: 1.7rem;
+}
+.label-earnings {
+    width: 65px;
+    display: inline-block;
+}
+.table-heading{
+    background: #f5f5f5;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+#dateInput {
+    display: block;
+    width: 95px;
+    float: left;
+}
+#dateSelect {
+    width: 87%;
+    display: block;
+    float: left;
+    margin-left: -9px;
+}
+#refIdx {
+    padding: 5px;
+    background-color: #f1f1f1;
+}
+#refIdx small{
+    padding: 0 5px;
+    border-right: solid 1px #c7c7c7;
+}
+
+/*Tool tips*/
+#alerts {
+    position: fixed;
+    z-index: 999999999;
+    bottom: 80px;
+    right: 5px;
+}
+#alerts .close {
+    padding-left: 10px;
+    color: var(--white-color);
+    opacity: 1;
+}
+li.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+.wcc-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.wcc-tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: var(--white-color);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.wcc-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+.wcc-tooltip:hover{
+    background-color: #fff8e1;
+}
+.wcc-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.mb-dropdown {
+    float: left;
+    width: 32%;
+    margin-left: 1%;
+}
+/*footer*/
+.main-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    margin: 0;
+    padding: 0 5px;
+    font-size: 1.1rem;
+}
+footer .navbar-nav>li>a {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 40px;
+}
+footer .navbar-nav>li>a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    color: #222d32;
+}
+#footerNav a {
+    padding: 0 5px;
+}
+.img-upload-stage{
+    padding: 10px;
+}
+#copy-right{
+    line-height: 40px;
+}
+#fillingStatus label{
+    display: inline;
+    padding-right: 10px;
+}
+#idW9TypeOtherEdit.form-control {
+    width: 150px;
+    display: inline-block;
+}
+.modal-content {
+    background-color: #ecf0f5 !important;
+    color: #000 !important;
+}
+
+.blocking_city {
+    /* width: 235px; */
+    padding: 3px 13px;
+}
+/*W9 */
+#individual_ssn,
+#exempt_backup_holding_check,
+#employer_identification_number,
+#exempt_from_backup_withholding{
+    padding: 15px;
+    background-color: #d9e0e8;
+    margin-bottom: 15px;
+}
+
+#schedule-text table{
+    margin: auto;
+}
+.calendar_icon {
+    position: absolute;
+    top: 35px;
+    right: 25px;
+    cursor: pointer;
+}
+.custom-left{
+    float: left;
+    padding-right: 10px;
+    line-height: 37px;
+}
+.wl-bg{
+    background-color: var(--white-color);
+    padding: 0;
+}
+.tab-content.wl-bg {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.th{
+    border-bottom: 1px solid rgba(54, 54, 54, 0.18823529411764706);
+    background-color: #3c8dbc;
+    color: var(--white-color);
+}
+.td {
+    cursor: pointer;
+}
+.td:hover {
+   background: #0A3E87 !important;
+    color: var(--white-color);
+}
+/*ui calendar*/
+.dpButton,
+.dpTodayButtonTD button{
+    padding: 4px;
+    border: 1px solid #c2d3ec;
+    border-radius: 1px;
+}
+.dpTable{
+    width: 100% !important;
+}
+.dpDayTD {
+    padding: 5px !important;
+}
+/*check boxes*/
+.fancy-checkbox{
+    cursor: pointer;
+}
+.fancy-checkbox input[type="checkbox"],
+.fancy-checkbox .checked{
+    display: none;
+}
+.fancy-checkbox input[type="checkbox"]:checked ~ .checked{
+    display: inline-block;
+}
+.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked{
+    display: none;
+}
+.cta-text .fa{
+    padding: 0 5px;
+    display: block;
+    font-size: 6rem;
+}
+.cta-text ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+}
+.cta-text li{
+    float: left;
+    padding: 5px;
+    margin: 0 5px;
+}
+/*
+Site Mail
+*/
+#siteMailMembers .panel-body {
+    padding: 0px;
+}
+#siteMailMembers .panel-default>.panel-heading {
+    padding-left: 5px;
+}
+#fileNameInfo {
+    position: absolute;
+    top: 5px;
+    left: 125px;
+    right: 0;
+}
+#reply {
+    background-color: rgba(238, 238, 238, 0.25);
+}
+#searchMemberList {
+    position: relative;
+    width: 250px;
+}
+#searchMemberList ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    left: 5px;
+    border: solid 1px #e0e0e0;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+#searchMemberList li{
+    padding: 5px;
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+#searchMemberList li:hover{
+    background-color: #8e8e8e;
+    color: var(--white-color);
+}
+.addressListNav {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    max-height: 275px;
+    overflow-y: scroll;
+}
+.addressListNav li{
+    padding: 5px;
+}
+.addressListNav li:nth-child(odd){
+    background-color: rgba(241, 241, 241, 0.56);
+}
+.addressListNav .heading{
+    margin: 0;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #dcdcdc;
+}
+.mailbox-attachment-size {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.mailbox-subject,
+.mailbox-name{
+    cursor: pointer;
+}
+.check-box-holder {
+    text-align: center;
+    padding: 2px;
+}
+.mailItemRow.mailListUnread {
+    font-weight: bold;
+}
+.mailItemRow.mailListRead{
+    font-weight: normal !important;
+}
+.modal-backdrop{
+    z-index: 999999;
+}
+.modal-open .modal {
+    z-index: 9999999;
+}
+.list-group-item{
+    background-color: transparent;
+}
+.compose-btn {
+    width: 150px;
+    position: fixed;
+    bottom: 55px;
+    right: 15px;
+}
+#mailMessage{
+    max-height: 300px;
+    height: 100vh
+}
+.notesTxt tr>td{
+    text-align: left;
+}
+.compose-btn a{
+    box-shadow: 0 0 1px #ccc;
+    -webkit-transition: all 0.5s ease-in-out;
+    color: var(--white-color);
+}
+.compose-btn a:hover{
+    -webkit-transform: scale(1.1);
+    background: #31708f;
+}
+.table-responsive.mailbox-messages {
+    min-height: 500px;
+    height: 100%;
+}
+.margin-bottom-none{
+    margin-bottom: 0;
+}
+/* Application Status */
+.application-status{
+    padding-bottom: 15px;
+}
+.model-status-list{
+    width: 355px;
+    margin: auto;
+    text-align: left;
+    padding-left: 0;
+}
+.model-status-list .wcc-tooltip .tooltiptext {
+    width: 400px;
+    bottom: 75%;
+    left: 64%;
+    padding: 10px;
+}
+.model-status-list li {
+    list-style: none;
+    padding: 5px 0;
+}
+.model-status-list li:hover {
+    cursor: pointer;
+}
+.tip-text{
+    display: block;
+    background-color: rgba(0, 0, 0, 0.12);
+    padding: 6px 3px;
+}
+.tip-trigger{
+    cursor: pointer;
+}
+#fake-modal.modal-backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#fake-modal i.fa.fa-refresh.fa-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 7em;
+    margin-top: -1em;
+}
+#frmDocumentReview .col-sm-12{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/*for white labels */
+#chat_assistant {
+    position: fixed;
+    bottom: 75px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.47);
+    padding: 15px;
+    border-radius: 50% 50%;
+    z-index: 999;
+}
+.wlb-section{
+    padding: 15px 0;
+}
+.link{
+    color: inherit !important;
+    text-decoration: underline;
+    transition: 0.3s;
+    opacity: 0.7
+}
+.link:hover{
+    opacity: 1;
+}
+.link-mask{
+    cursor: pointer;
+}
+
+#jvlabelWrap {
+    margin-bottom: 51px;
+    overflow: hidden;
+}
+@media(min-width: 900px){
+    #linkContainer {
+        position: absolute;
+        width: 100%;
+        top: 17px;
+    }
+    #modal-w9 .modal-dialog {
+        width: 950px;
+    }
+    .image-holder{
+        margin-top: 10px;
+        width: 30%;
+    }
+    .image-holder img{
+        border: solid 1px #c1c1c1;
+        padding: 4px;
+    }
+    #menuToggle{
+        display: none;
+    }
+}
+@media(max-width: 1024px){
+    #refProgramTools .header{
+        width: 100%;
+    }
+    #refProgramTools a{
+        padding: 10px 10px;
+    }
+}
+@media (min-width: 768px){
+    #cropPhotos .modal-dialog{
+        width: 900px;
+        margin: 30px auto;
+    }
+    #uploadPhotosOnly .modal-dialog{
+        width: 450px;
+        margin: 30px auto;
+    }
+    #deletePhoto .modal-dialog{
+        width: 325px;
+    }
+}
+@media(max-width: 767px){
+
+    #modelActionBtns .btn-danger{
+        background-color: #dd4b39 !important;
+        border-color: #d73925 !important;
+    }
+    #modelActionBtns .btn-success{
+        background-color: #00a65a !important;
+        border-color: #008d4c !important;
+    }
+    #model-profile{
+        right: 0;
+        width: 100%;
+    }
+    #refProgramTools li {
+        float: left;
+        font-size: 14px;
+    }
+    #upload-image-i img {
+        display: block;
+        margin: auto;
+    }
+    #uploadImages {
+        margin-bottom: 15px;
+    }
+    #mailMessage{
+        max-height: 100px;
+        height: 100vh
+    }
+    #menuToggle{
+        cursor: pointer;
+
+    }
+    span.control-fileupload {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .table>tbody>tr>td {
+        padding: 3px;
+    }
+    table.table.table-striped {
+        font-size: 1.3rem;
+    }
+    #schedule-text table {
+        width: 100%;
+    }
+    .box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title {
+        font-size: 16px;
+    }
+    #myAccount .fa{
+        padding: 0 10px;
+    }
+    #frmAccountInfo span.pull-right {
+        display: block;
+        float: none !important;
+    }
+    .compose-btn {
+        width: 38px;
+    }
+    .compose-btn a{
+        border-radius: 25px;
+    }
+    .table-responsive.mailbox-messages {
+        min-height: 200px;
+    }
+    #inbox-list,
+    #inbox-folders{
+        position: absolute;
+    }
+    #inbox-folders{
+        width: 30%;
+        left: -200px;
+        padding-right: 0;
+    }
+    #inbox-list{
+        width: 100%;
+        right: 0;
+    }
+    .model-status-list .wcc-tooltip .tooltiptext::after {
+        bottom: 0;
+        left: 94%;
+        margin-left: 0;
+        border-color: #555 transparent transparent transparent;
+    }
+    .model-status-list .wcc-tooltip .tooltiptext {
+        width: 100%;
+        bottom: 27px;
+        left: 31%;
+        padding: 10px;
+    }
+    .btn{
+        white-space:normal !important;
+        word-wrap: break-word;
+    }
+    .space-line{
+        margin-top: 5px;
+    }
+    #alerts{
+        left: 5px;
+    }
+}
+@media (max-width: 540px) {
+    .cta-text li{
+        width: 50%;
+        margin: 0;
+    }
+    .model-status-list {
+        width: 255px;
+    }
+}
+.skin-blue .wrapper{
+    background-color: rgba(34, 45, 50, 0.6313725490196078) !important;
+}
+/* GUI overwrites */
+.clear_wl.nav-pills>li.active>a {
+    background: transparent !important;
+    color: #444 !important;
+    border-top: 0 !important;
+    border-left-color: #3c8dbc !important;
+}
+.clear_wl.panel-default>.panel-heading {
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+}
+p.clear_wl{
+    color: inherit !important;
+}
+a#documents_powerform_1 {
+    border: 0;
+    background: #3498db;
+    color: var(--white-color);
+    padding: 5px 8px;
+    margin-left: 5px;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+a#documents_powerform_1:hover {
+    border: 0;
+    background: rgba(52, 152, 219, 0.91);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+/* bs overwrites */
+.text-warning {
+    color: #c3bf12;
+}

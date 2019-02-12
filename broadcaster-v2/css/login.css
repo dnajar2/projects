@@ -1,0 +1,82 @@
+body{
+    font-size: 16px;
+}
+#model-lp{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+#login-register {
+    width: 400px;
+    height: 410px;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    padding: 15px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px rgba(204, 204, 204, 0.48) solid;
+    overflow: hidden;
+}
+#remember-me-checkbox {
+    height: 40px;
+    line-height: 20px;
+    margin: 0;
+}
+#header {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#remember-me-checkbox {
+    color: #6c757d;
+}
+/*:hover, :active, :focus{*/
+    /*text-decoration:none !important;*/
+    /*outline: 0 !important;*/
+    /*outline: none !important;*/
+    /*border:none !important;*/
+/*}*/
+
+.pointer{
+    cursor: pointer;
+}
+/*styled check box*/
+.fancy-checkbox input[type="checkbox"],
+.fancy-checkbox .checked {
+    display: none;
+}
+.fancy-checkbox input[type="checkbox"]:checked ~ .checked{
+    display: inline-block;
+}
+.fancy-checkbox input[type="checkbox"]:checked ~ .unchecked{
+    display: none;
+}
+
+#jvlabelWrap {
+    margin-bottom: 51px;
+}
+
+@media (max-width: 678px) {
+    .col-sm-6{
+        width: 50%;
+    }
+    #login-register {
+        margin-top: 90px;
+        top: 0;
+        position: relative;
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        margin-left: inherit;
+        height: inherit;
+    }
+    #remember-me-checkbox .text-right {
+        float: right;
+        margin-top: -25px;
+    }
+
+}

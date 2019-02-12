@@ -1,0 +1,17 @@
+/* Default skin colors */
+
+@font-face{font-family:'Glyphicons Halflings';src:url(../../fonts/glyphicons-halflings-regular.eot);src:url(../../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../../fonts/glyphicons-halflings-regular.woff2) format('woff2'),url(../../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}
+
+.button-1{
+    color: #fff !important;
+    background-color: rgba(123, 183, 51, 1)!important;
+    border: solid 1px rgba(123, 183, 51, 1)!important;
+}
+.button-2{
+    color: #fff!important;
+    background-color: #3498db;
+}
+.button-3{
+    color: #fff;
+    background-color: #ff0600;
+}
