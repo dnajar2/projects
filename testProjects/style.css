@@ -1,0 +1,76 @@
+.nav-main ul {
+    cursor: default;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    position: relative;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    font-size: 1em;
+    color: #000;
+    list-style: none;
+    overflow:hidden;
+}
+.nav-main ul:hover {
+    overflow:visible;
+}
+
+.nav-main ul li {
+    display: block;
+    position: relative;
+    float: left;
+    min-width: 25%;
+    min-width: 100px;
+}
+
+.nav-main ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    color: #000;
+    border-bottom: 1px;
+    cursor: pointer;
+    padding: 5px;
+}
+.nav-main ul li a:hover {
+    background-color: aliceblue;
+}
+
+/* Hover Fade */
+.nav-main li ul {
+    webkit-transition: opacity 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    -moz-transition: opacity 0.3s ease-out, -moz-transform 0.3s ease-out;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    opacity: 0;
+    height: 0;
+    width: 0;
+//overflow: hidden;
+}
+.nav-main li:hover > ul {
+    display: block;
+    position: absolute;
+    opacity: 1;
+    height: auto;
+    width: auto;
+    border: solid 1px #ccc;
+}
+
+.nav-main li:hover li {
+    float: none;
+}
+
+.nav-main ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+.nav-main ul:before,
+.nav-main ul:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.nav-main ul:after {
+    clear: both;
+}
