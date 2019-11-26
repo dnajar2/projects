@@ -1,0 +1,17 @@
+.lead-text{
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+.card-holder{
+  position: relative;
+  height: 160px;
+}
+.card-panel{
+  position: absolute;
+  bottom: -15px;
+  transition: all 0.5s ease;
+}
+.card-panel:hover{
+  position: absolute;
+  bottom: 0;
+}
